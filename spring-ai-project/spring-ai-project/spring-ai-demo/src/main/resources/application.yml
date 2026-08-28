@@ -2,10 +2,9 @@ spring:
   application:
     name: spring-ai-demo
   ai:
-    openai:
-      api-key: sk-your-key
+    deepseek:
+      api-key: sk-13b0bc7c383a4f9ba3df1f8a7110a90f
       base-url: https://api.deepseek.com
       chat:
-        options:
-          model: deepseek-chat
-          temperature: 0.7
+        model: deepseek-v4-flash
+        temperature: 0.7
