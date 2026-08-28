@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -43,5 +44,17 @@ public class ChatClientController {
                 // 返回响应
                 .entity(Recipe.class);
         return recipe.toString();
+    }
+
+    // 流式返回
+    @GetMapping(value = "/stream", produces = "text/html;charset=utf-8")
+    public Flux<String> stream(String userInput) {
+        return this.chatClient.prompt()
+                // 用户输入
+                .user(userInput)
+                // 调用Ai, 流式输出
+                .stream()
+                // 返回响应
+                .content();
     }
 }
