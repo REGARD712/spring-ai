@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @ClassName: ChatClientController
  * @Author: JacksonLee
@@ -27,5 +29,19 @@ public class ChatClientController {
                 .call()
                 // 返回响应
                 .content();
+    }
+
+    // ChatClient结构输出
+    record Recipe (String dish, List<String> ingredients) {}
+    @RequestMapping("/entity")
+    public String entity (String userInput) {
+        Recipe recipe = this.chatClient.prompt()
+                // 用户输入
+                .user(userInput)
+                // 调用Ai
+                .call()
+                // 返回响应
+                .entity(Recipe.class);
+        return recipe.toString();
     }
 }
