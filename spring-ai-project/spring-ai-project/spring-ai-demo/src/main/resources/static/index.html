@@ -8,16 +8,16 @@
 <body>
     <div id="sse"></div>
     <script>
-        let eventSource = new EventSource("/sse/end");
-        // eventSource.onmessage = function (event) {
-        //     document.getElementById("sse").innerHTML = event.data;
-        // }
-        eventSource.addEventListener("foo", (event)=>{
-            document.getElementById("sse").innerHTML= event.data;
-        });
-        eventSource.addEventListener("end", (event)=>{
-            eventSource.close();
-        });
+        let eventSource = new EventSource("/sse/stream");
+        eventSource.onmessage = function (event) {
+            document.getElementById("sse").innerHTML = event.data;
+        }
+        // eventSource.addEventListener("foo", (event)=>{
+        //     document.getElementById("sse").innerHTML= event.data;
+        // });
+        // eventSource.addEventListener("end", (event)=>{
+        //     eventSource.close();
+        // });
     </script>
 </body>
 </html>

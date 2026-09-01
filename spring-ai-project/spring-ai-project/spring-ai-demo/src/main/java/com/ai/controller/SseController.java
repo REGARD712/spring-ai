@@ -4,9 +4,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.Duration;
 import java.util.Date;
 
 /**
@@ -73,5 +75,11 @@ public class SseController {
         // 定义end事件，表示当前流传输结束
         writer.write("event: end\ndata: EOF\n\n");
         writer.flush();
+    }
+
+    @RequestMapping("/stream")
+    public Flux<String> stream () {
+        return Flux.interval(Duration.ofSeconds(1)) // 每秒发送一次数据
+                .map(s -> new Date().toString()); // 将当前时间转换为字符串
     }
 }
