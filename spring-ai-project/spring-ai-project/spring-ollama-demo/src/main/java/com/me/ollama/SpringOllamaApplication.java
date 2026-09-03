@@ -1,10 +1,11 @@
 package com.me.ollama;
 
-/**
- * @ClassName: SpringOllamaApplication
- * @Author: JacksonLee
- * @Date: 2026/9/3
- * @Description: TODO 描述类做什么事情/实现什么功能
- */
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class SpringOllamaApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringOllamaApplication.class, args);
+    }
 }

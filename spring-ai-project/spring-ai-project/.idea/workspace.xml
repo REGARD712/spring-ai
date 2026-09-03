@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2fe4eb26-be18-416f-b2a4-512ee98af885" name="Changes" comment="ChatModel接口">
+      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/SpringOllamaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/config/ChatClientConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/controller/ChatClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/controller/OllamaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-ai-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-ai-demo/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/JAVA/AI/Spring AI/ai/spring-ai-project/spring-ai-project" value="3Ij8IzRxivBRskq4WypE8BVlTKQ" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="C:\JAVA\JavaEE\Maven\apache-maven-3.9.14" />
+        <option name="localRepository" value="C:\JAVA\JavaEE\Maven\.m2\repository" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="useMavenConfig" value="false" />
+        <option name="userSettingsFile" value="C:\JAVA\JavaEE\Maven\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3IWhIEVnb9mX3M8I6DT7kchkg5J" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Ask" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FluxDemoTest.executor": "Run",
+    "Maven.spring-ollama-demo [clean].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.SpringAiApplication.executor": "Run",
+    "Spring Boot.SpringOllamaApplication.executor": "Run",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/JAVA/AI/Spring AI/ai/spring-ai-project/spring-ai-project",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\JAVA\AI\Spring AI\ai\spring-ai-project\spring-ai-project\spring-ai-demo\src\main\java\com\ai\configuration" />
+      <recent name="C:\JAVA\AI\Spring AI\ai\spring-ai-project\spring-ai-project\spring-ollama-demo\src\main\java\com\me\ollama\controller" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ai.controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringOllamaApplication">
+    <configuration name="FluxDemoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FluxDemoTest" />
+      <module name="spring-ai-demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringAiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="spring-ai-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ai.SpringAiApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ai.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringOllamaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="spring-ollama-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.me.ollama.SpringOllamaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SpringAiApplication" />
+        <item itemvalue="Application.FluxDemoTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2fe4eb26-be18-416f-b2a4-512ee98af885" name="Changes" comment="" />
+      <created>1785920449039</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1785920449039</updated>
+      <workItem from="1787886153431" duration="10320000" />
+      <workItem from="1787998328211" duration="82000" />
+      <workItem from="1788244212238" duration="2804000" />
+      <workItem from="1788263161926" duration="4030000" />
+      <workItem from="1788419608721" duration="3487000" />
+      <workItem from="1788423136217" duration="6000" />
+      <workItem from="1788423149316" duration="3678000" />
+    </task>
+    <task id="LOCAL-00001" summary="准备工作">
+      <option name="closed" value="true" />
+      <created>1787886773963</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787886773963</updated>
+    </task>
+    <task id="LOCAL-00002" summary="接入deepseekAPI">
+      <option name="closed" value="true" />
+      <created>1787888502632</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787888502632</updated>
+    </task>
+    <task id="LOCAL-00003" summary="接入deepseekAPI">
+      <option name="closed" value="true" />
+      <created>1787899998968</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787899998968</updated>
+    </task>
+    <task id="LOCAL-00004" summary="接入openaiAPI">
+      <option name="closed" value="true" />
+      <created>1787902051864</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1787902051865</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ChatClient聊天模型配置和角色预设">
+      <option name="closed" value="true" />
+      <created>1787903868203</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1787903868203</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ChatClient结构输出">
+      <option name="closed" value="true" />
+      <created>1787905016805</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1787905016805</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ChatClient流式输出返回">
+      <option name="closed" value="true" />
+      <created>1787905362769</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1787905362769</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ChatClient流式输出返回">
+      <option name="closed" value="true" />
+      <created>1787998354878</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1787998354878</updated>
+    </task>
+    <task id="LOCAL-00009" summary="通过SimpleLoggerAdviser打印日志">
+      <option name="closed" value="true" />
+      <created>1788245209486</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1788245209486</updated>
+    </task>
+    <task id="LOCAL-00010" summary="SSE协议流式编程实现服务器端流式输出">
+      <option name="closed" value="true" />
+      <created>1788248827510</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1788248827511</updated>
+    </task>
+    <task id="LOCAL-00011" summary="通过Flux实现流式输出">
+      <option name="closed" value="true" />
+      <created>1788264400046</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1788264400046</updated>
+    </task>
+    <task id="LOCAL-00012" summary="通过Flux实现流式输出">
+      <option name="closed" value="true" />
+      <created>1788264829395</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1788264829395</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ChatModel接口">
+      <option name="closed" value="true" />
+      <created>1788267418009</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1788267418009</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="准备工作" />
+    <MESSAGE value="接入deepseekAPI" />
+    <MESSAGE value="接入openaiAPI" />
+    <MESSAGE value="ChatClient聊天模型配置和角色预设" />
+    <MESSAGE value="ChatClient结构输出" />
+    <MESSAGE value="ChatClient流式输出返回" />
+    <MESSAGE value="通过SimpleLoggerAdviser打印日志" />
+    <MESSAGE value="SSE协议流式编程实现服务器端流式输出" />
+    <MESSAGE value="通过Flux实现流式输出" />
+    <MESSAGE value="ChatModel接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChatModel接口" />
+  </component>
+</project>
