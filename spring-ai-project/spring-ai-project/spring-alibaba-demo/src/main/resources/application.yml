@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: spring-alibaba-demo
+  ai:
+    dashscope:
+      api-key: sk-ws-H.PMPXHRY.Qtof.MEUCIQCSuT04PWnkPtvXpGA5GBsb02HydUIfXScampMZctuijwIgYKcBnl6dPz2sNhfFcSc5sjGE71kjhDjhHzoxCCUKwog
+
+logging:
+    pattern:
+      console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+      file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

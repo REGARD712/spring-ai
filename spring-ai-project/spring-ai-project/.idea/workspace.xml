@@ -8,14 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fe4eb26-be18-416f-b2a4-512ee98af885" name="Changes" comment="ChatModel接口">
-      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/SpringOllamaApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/config/ChatClientConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/controller/ChatClientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/java/com/me/ollama/controller/OllamaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ollama-demo/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/AlibabaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/controller/AliController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-ai-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-ai-demo/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +85,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.AlibabaApplication.executor": "Run",
     "Spring Boot.SpringAiApplication.executor": "Run",
     "Spring Boot.SpringOllamaApplication.executor": "Run",
     "copilot.chat.legacySessionMetadata.migrated": "true",
@@ -98,6 +97,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
@@ -111,10 +111,27 @@
       <recent name="com.ai.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SpringOllamaApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AlibabaApplication">
     <configuration name="FluxDemoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FluxDemoTest" />
       <module name="spring-ai-demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlibabaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="spring-alibaba-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.me.alibaba.AlibabaApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,7 +184,8 @@
       <workItem from="1788263161926" duration="4030000" />
       <workItem from="1788419608721" duration="3487000" />
       <workItem from="1788423136217" duration="6000" />
-      <workItem from="1788423149316" duration="3678000" />
+      <workItem from="1788423149316" duration="4057000" />
+      <workItem from="1788590459295" duration="1411000" />
     </task>
     <task id="LOCAL-00001" summary="准备工作">
       <option name="closed" value="true" />
