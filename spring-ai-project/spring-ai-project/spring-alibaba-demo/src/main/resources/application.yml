@@ -6,7 +6,15 @@ spring:
     name: spring-alibaba-demo
   ai:
     dashscope:
-      api-key: sk-ws-H.PMPXHRY.Qtof.MEUCIQCSuT04PWnkPtvXpGA5GBsb02HydUIfXScampMZctuijwIgYKcBnl6dPz2sNhfFcSc5sjGE71kjhDjhHzoxCCUKwog
+      api-key: sk-ws-H.PMPXHRY.Mzyk.MEUCIQC3OMIGnnBymAR7GDFUyeOxO4l4qu-A_rZ720sdyy-3zgIgAX_qHeDUx9_gAehTWp-d12LPX8hFpKV3WiUSZrT4rjA
+      chat:
+        options:
+          model: qwen-vl-max #模型名称
+          multi-model: true #是否启⽤多模型
+app:
+  http:
+    connect-timeout: 10
+    read-timeout: 300  # 单位：秒
 
 logging:
     pattern:

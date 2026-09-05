@@ -7,13 +7,16 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fe4eb26-be18-416f-b2a4-512ee98af885" name="Changes" comment="ChatModel接口">
-      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/AlibabaApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/controller/AliController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="2fe4eb26-be18-416f-b2a4-512ee98af885" name="Changes" comment="Spring-Ai-Alibaba调用通义模型API">
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/config/ChatClientConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/controller/ChatClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/java/com/me/alibaba/controller/MultiModelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-ai-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-ai-demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-alibaba-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-alibaba-demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-alibaba-demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-alibaba-demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-ollama-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-ollama-demo/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +123,17 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="AlibabaApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.AlibabaApplication">
     <configuration name="FluxDemoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -185,7 +199,7 @@
       <workItem from="1788419608721" duration="3487000" />
       <workItem from="1788423136217" duration="6000" />
       <workItem from="1788423149316" duration="4057000" />
-      <workItem from="1788590459295" duration="1411000" />
+      <workItem from="1788590459295" duration="9795000" />
     </task>
     <task id="LOCAL-00001" summary="准备工作">
       <option name="closed" value="true" />
@@ -291,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788267418009</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Spring-Ai-Alibaba调用通义模型API">
+      <option name="closed" value="true" />
+      <created>1788592107553</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1788592107553</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +330,7 @@
     <MESSAGE value="SSE协议流式编程实现服务器端流式输出" />
     <MESSAGE value="通过Flux实现流式输出" />
     <MESSAGE value="ChatModel接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="ChatModel接口" />
+    <MESSAGE value="Spring-Ai-Alibaba调用通义模型API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring-Ai-Alibaba调用通义模型API" />
   </component>
 </project>
