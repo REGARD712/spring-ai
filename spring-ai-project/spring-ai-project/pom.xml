@@ -14,6 +14,7 @@
         <module>spring-ai-demo</module>
         <module>spring-ollama-demo</module>
         <module>spring-alibaba-demo</module>
+        <module>spring-chat-bot</module>
     </modules>
     <!-- 完善依赖 -->
     <parent>
