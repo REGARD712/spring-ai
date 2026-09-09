@@ -17,8 +17,11 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/chat")
 @RestController
 public class ChatController {
-    @Resource
-    private ChatClient ollamaChatClient;
+    private final ChatClient ollamaChatClient;
+
+    public ChatController(ChatClient ollamaChatClient) {
+        this.ollamaChatClient = ollamaChatClient;
+    }
 
     /**
      * @param prompt 用户输入的消息内容
