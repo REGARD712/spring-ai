@@ -4,7 +4,7 @@ import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.deepseek.DeepSeekChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +22,7 @@ import java.util.Objects;
 @RestController
 public class DeepSeekController {
     @Autowired
-    private DeepSeekChatModel deepSeekChatModel;
+    private OpenAiChatModel deepSeekChatModel;
 
     @RequestMapping("/chat")
     public String chat (String message) {
