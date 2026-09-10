@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/chat")
 @RestController
 public class ChatController {
-    private final ChatClient ollamaChatClient;
+    private final ChatClient chatClient;
 
     @Resource
     private ChatHistoryRepository memoryChatHistoryRepository;
@@ -35,8 +35,13 @@ public class ChatController {
     @Resource
     private ChatMemory chatMemory;
 
-    public ChatController(ChatClient ollamaChatClient) {
-        this.ollamaChatClient = ollamaChatClient;
+//    public ChatController(ChatClient ollamaChatClient) {
+//        this.chatClient = ollamaChatClient;
+//    }
+
+    // 改为deepseek
+    public ChatController(ChatClient deepseekChatClient) {
+        this.chatClient = deepseekChatClient;
     }
 
     /**
@@ -52,7 +57,7 @@ public class ChatController {
         // 存储会话
         memoryChatHistoryRepository.save(chatId, prompt);
         // 返回智能体的响应
-        return this.ollamaChatClient.prompt()
+        return this.chatClient.prompt()
                 .user(prompt)
                 .advisors(spec -> spec.param(AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY, chatId))
                 .stream()

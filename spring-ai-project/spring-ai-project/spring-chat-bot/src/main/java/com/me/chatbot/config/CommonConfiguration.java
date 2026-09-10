@@ -6,6 +6,7 @@ import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,6 +26,20 @@ public class CommonConfiguration {
      */
     @Bean
     public ChatClient ollamaChatClient (OllamaChatModel chatModel, ChatMemory chatMemory) {
+        return ChatClient.builder(chatModel)
+                .defaultSystem("你叫贾维斯，是托尼斯塔克创造的人工智能助手，能够帮忙解决各种问题")
+                .defaultAdvisors(new SimpleLoggerAdvisor(), new MessageChatMemoryAdvisor(chatMemory))
+                .build();
+    }
+
+    /**
+     * @param chatModel deepseek的ChatModel
+     * @param chatMemory 管理会话的ChatMemory
+     * @return ChatClient ChatClient deepseek的ChatClient
+     * @description: 封装deepseekChatClient(多轮对话, 有记忆功能)
+     */
+    @Bean
+    public ChatClient deepseekChatClient (OpenAiChatModel chatModel, ChatMemory chatMemory) {
         return ChatClient.builder(chatModel)
                 .defaultSystem("你叫贾维斯，是托尼斯塔克创造的人工智能助手，能够帮忙解决各种问题")
                 .defaultAdvisors(new SimpleLoggerAdvisor(), new MessageChatMemoryAdvisor(chatMemory))

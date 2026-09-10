@@ -2,10 +2,19 @@ spring:
   application:
     name: spring-chat-bot
   ai:
-    ollama:
-      base-url: http://127.0.0.1:11434 #本地
+    # Ollama配置
+#    ollama:
+#      base-url: http://127.0.0.1:11434 #本地
+#      chat:
+#        model: deepseek-r1:7b
+    # 接入DeepSeek
+    openai:
+      api-key: sk-13b0bc7c383a4f9ba3df1f8a7110a90f
+      base-url: https://api.deepseek.com
       chat:
-        model: deepseek-r1:7b
+        options:
+          model: deepseek-v4-flash
+          temperature: 0.7
 
 logging:
   level:
