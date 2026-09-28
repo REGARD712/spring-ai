@@ -11,6 +11,7 @@
     <modules>
         <module>spring-image-demo</module>
         <module>spring-qianfan-demo</module>
+        <module>spring-alibaba-demo</module>
     </modules>
 
     <properties>
