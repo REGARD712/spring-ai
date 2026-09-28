@@ -2,3 +2,6 @@ spring:
   ai:
     dashscope:
       api-key: ${QWEN_API_KEY}
+logging:
+  level:
+    org.springframework.ai.retry.autoconfigure: error # 将该类的日志级别设置为error
