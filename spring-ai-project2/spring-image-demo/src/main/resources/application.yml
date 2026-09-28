@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-image-demo
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
