@@ -23,8 +23,15 @@ public class ImageModelTest {
     @Test
     void test2 () {
         DashScopeImageOptions options = DashScopeImageOptions.builder()
-                .withModel("qwen-image-3.0-pro")
+                .withStyle("<oil painting>")
                 .build();
+        ImageResponse imageResponse = imageModel.call(new ImagePrompt("一个小孩子在海边玩耍", options));
+        String imgUrl = imageResponse.getResult().getOutput().getUrl();
+        System.out.println(imgUrl);
+    }
+
+    @Test
+    void test3 () {
         ImageResponse imageResponse = imageModel.call(new ImagePrompt("一个小孩子在海边玩耍"));
         String imgUrl = imageResponse.getResult().getOutput().getUrl();
         System.out.println(imgUrl);

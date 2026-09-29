@@ -4,7 +4,8 @@ spring:
       api-key: ${QWEN_API_KEY}
 #      image:
 #        options:
-#          model: qwen-image-3.0
+#          model: qwen-image-3.0-pro
+#      base-url: https://llm-ql487nsxacardrij.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
 logging:
   level:
     org.springframework.ai.retry.autoconfigure: error # 将该类的日志级别设置为error
