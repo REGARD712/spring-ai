@@ -17,7 +17,7 @@ public class AudioModelTest {
     @Autowired
     private DashScopeSpeechSynthesisModel dashScopeSpeechSynthesisModel;
 
-    private final String text = "白日依山尽，黄河入海流，欲穷千里目，更上一层楼。";
+    private final String text = "小池, 泉眼无声惜细流, 树阴照水爱晴柔. 小荷才露尖尖角, 早有蜻蜓立上头";
 
     @Test
     void tts () {
