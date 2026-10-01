@@ -5,6 +5,11 @@ spring:
       image:
         options:
           model: wan2.2-t2i-flash
+#      audio:
+#        synthesis:
+#          options:
+#            model: "cosyvoice-v2"
+#            voice: "longnan_v2"
 logging:
   level:
     org.springframework.ai.retry.autoconfigure: error # 将该类的日志级别设置为error

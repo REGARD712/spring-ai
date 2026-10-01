@@ -1,6 +1,7 @@
 package com.me.alibaba;
 
 import com.alibaba.cloud.ai.dashscope.audio.DashScopeSpeechSynthesisModel;
+import com.alibaba.cloud.ai.dashscope.audio.DashScopeSpeechSynthesisOptions;
 import com.alibaba.cloud.ai.dashscope.audio.synthesis.SpeechSynthesisPrompt;
 import com.alibaba.cloud.ai.dashscope.audio.synthesis.SpeechSynthesisResponse;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,23 @@ public class AudioModelTest {
     @Test
     void tts () {
         SpeechSynthesisResponse response = dashScopeSpeechSynthesisModel.call(new SpeechSynthesisPrompt(text));
+        File file = new File(System.getProperty("user.dir") + "/output.mp3");
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            ByteBuffer audio = response.getResult().getOutput().getAudio();
+            fos.write(audio.array());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void tts2 () {
+        DashScopeSpeechSynthesisOptions options = DashScopeSpeechSynthesisOptions.builder()
+                .model("cosyvoice-v3-flash")
+                .voice("longhuhu_v3")
+                .speed(0.5f)
+                .build();
+        SpeechSynthesisResponse response = dashScopeSpeechSynthesisModel.call(new SpeechSynthesisPrompt(text, options));
         File file = new File(System.getProperty("user.dir") + "/output.mp3");
         try (FileOutputStream fos = new FileOutputStream(file)) {
             ByteBuffer audio = response.getResult().getOutput().getAudio();
