@@ -6,6 +6,7 @@ import com.alibaba.dashscope.audio.asr.transcription.Transcription;
 import com.alibaba.dashscope.audio.asr.transcription.TranscriptionParam;
 import com.alibaba.dashscope.audio.asr.transcription.TranscriptionQueryParam;
 import com.alibaba.dashscope.audio.asr.transcription.TranscriptionResult;
+import com.google.gson.GsonBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.AudioTranscriptionResponse;
@@ -41,7 +42,7 @@ public class AudioTranscriptionModelTest {
         TranscriptionParam param =
                 TranscriptionParam.builder()
                         // 若没有将API Key配置到环境变量中，需将apiKey替换为自己的API Key
-                        .apiKey("sk-ws-H.PLYHDHY.eWCN.MEUCIQDS1Lu_-judj_q50iH9Cjp_8xL4PQiE0qQR4Q5jZHY70gIgX8AV4Ljk22lSTXpdyC9G18sEWF7IrclxFv2dde6fUwk")
+//                        .apiKey("your-api-key")
                         .model("paraformer-v2")
                         // “language_hints”只支持paraformer-v2模型
                         .parameter("language_hints", new String[]{"zh", "en"})
@@ -59,7 +60,7 @@ public class AudioTranscriptionModelTest {
             result = transcription.wait(
                     TranscriptionQueryParam.FromTranscriptionParam(param, result.getTaskId()));
             // 打印结果
-            System.out.println(result.getOutput());
+            System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(result.getOutput()));
         } catch (Exception e) {
             System.out.println("error: " + e);
         }
