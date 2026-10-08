@@ -11,7 +11,6 @@ import com.alibaba.dashscope.audio.asr.transcription.TranscriptionQueryParam;
 import com.alibaba.dashscope.audio.asr.transcription.TranscriptionResult;
 import com.alibaba.dashscope.common.ResultCallback;
 import com.google.gson.GsonBuilder;
-import io.micrometer.core.instrument.util.TimeUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.AudioTranscriptionResponse;
