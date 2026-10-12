@@ -1,7 +1,7 @@
 package com.me.alibaba;
 
-import com.alibaba.cloud.ai.dashscope.audio.DashScopeSpeechSynthesisModel;
-import com.alibaba.cloud.ai.dashscope.audio.DashScopeSpeechSynthesisOptions;
+import com.alibaba.cloud.ai.dashscope.audio.DashScopeAudioSpeechModel;
+import com.alibaba.cloud.ai.dashscope.audio.DashScopeAudioSpeechOptions;
 import com.alibaba.cloud.ai.dashscope.audio.synthesis.SpeechSynthesisPrompt;
 import com.alibaba.cloud.ai.dashscope.audio.synthesis.SpeechSynthesisResponse;
 import com.alibaba.dashscope.audio.tts.SpeechSynthesisAudioFormat;
@@ -19,7 +19,7 @@ import java.nio.ByteBuffer;
 @SpringBootTest
 public class AudioModelTest {
     @Autowired
-    private DashScopeSpeechSynthesisModel dashScopeSpeechSynthesisModel;
+    private DashScopeAudioSpeechModel dashScopeSpeechSynthesisModel;
 
     private final String text = "小池, 泉眼无声惜细流, 树阴照水爱晴柔. 小荷才露尖尖角, 早有蜻蜓立上头";
 
@@ -37,7 +37,7 @@ public class AudioModelTest {
 
     @Test
     void tts2() {
-        DashScopeSpeechSynthesisOptions options = DashScopeSpeechSynthesisOptions.builder()
+        DashScopeAudioSpeechOptions options = DashScopeAudioSpeechOptions.builder()
                 .model("cosyvoice-v3-flash")
                 .voice("longhuhu_v3")
                 .speed(0.5f)
