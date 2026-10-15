@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @Author: JacksonLee
  * @Date: 2026/10/14
  */
-public class DateTimeTool {
+public class DateTimeTools {
 
     @Tool(description = "Get the current date and time in the user's timezone")
     String getCurrentDateTime() {

@@ -1,8 +1,7 @@
 package com.me.alibaba.controller;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
-import com.me.alibaba.tool.DateTimeTool;
-import org.springframework.ai.chat.client.ChatClient;
+import com.me.alibaba.tool.DateTimeTools;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -58,7 +57,7 @@ public class ChatController {
 
     @RequestMapping("/callByTools")
     public String callByTools (String message) {
-        ToolCallback[] dateTimeTools = ToolCallbacks.from(new DateTimeTool());
+        ToolCallback[] dateTimeTools = ToolCallbacks.from(new DateTimeTools());
         ChatOptions chatOptions = ToolCallingChatOptions.builder()
                 .toolCallbacks(dateTimeTools)
                 .build();
