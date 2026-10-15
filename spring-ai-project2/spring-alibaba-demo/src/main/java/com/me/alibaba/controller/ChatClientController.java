@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
  * @Author: JacksonLee
  * @Date: 2026/10/14
  */
-@RequestMapping("/chat")
+@RequestMapping("/chatClient")
 @RestController
 public class ChatClientController {
     private final ChatClient chatClient;
