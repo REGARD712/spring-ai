@@ -35,8 +35,8 @@ public class ChatClientController {
     @Autowired
     public ChatClientController(DashScopeChatModel chatModel, ToolCallback weatherTools) {
         this.chatClient = ChatClient.builder(chatModel)
-                .defaultTools(new DateTimeTools())  // 时间工具
-                .defaultToolCallbacks(weatherTools) // 天气工具
+                .defaultTools(new DateTimeTools())  // 时间工具:声明式
+                .defaultToolCallbacks(weatherTools) // 天气工具:编程式
                 .build();
     }
 
