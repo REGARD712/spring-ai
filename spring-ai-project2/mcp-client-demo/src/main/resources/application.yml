@@ -1,0 +1,18 @@
+spring:
+  ai:
+    dashscope:
+      api-key: ${QWEN_API_KEY}
+    mcp:
+      client:
+        request-timeout: 60000
+        stdio:
+          servers-configuration: classpath:/mcp/mcp-servers-config.json
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %5level %logger{36} - %msg%n"
+  level:
+    io:
+      modelcontextprotocol:
+        client: debug
+        spec: debug
