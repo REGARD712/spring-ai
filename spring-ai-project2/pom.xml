@@ -3,6 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!-- 完善依赖 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <groupId>com.me</groupId>
     <artifactId>spring-ai-project2</artifactId>
@@ -12,6 +19,7 @@
         <module>spring-image-demo</module>
         <module>spring-qianfan-demo</module>
         <module>spring-alibaba-demo</module>
+        <module>mcp-client-demo</module>
     </modules>
 
     <properties>
@@ -19,15 +27,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-ai.version>1.0.1</spring-ai.version>
+        <spring-ai-alibaba.version>1.0.0.2</spring-ai-alibaba.version>
     </properties>
-
-    <!-- 完善依赖 -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
 
     <dependencyManagement>
         <dependencies>
@@ -35,6 +36,13 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
                 <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-bom</artifactId>
+                <version>${spring-ai-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
