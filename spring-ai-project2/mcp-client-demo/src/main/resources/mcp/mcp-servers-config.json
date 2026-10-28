@@ -1,13 +1,7 @@
 {
   "mcpServers": {
     "user-info": {
-      "command": "java",
-      "args": [
-        "-Dspring.ai.mcp.server.stdio=true",
-        "-Dlogging.pattern.console=",
-        "-jar",
-        "C:\\JAVA\\AI\\Spring AI\\ai\\spring-ai-project2\\mcp-stdio-server-demo\\target\\mcp-stdio-server-demo-1.0-SNAPSHOT.jar"
-      ]
+      "url": "http://127.0.0.1:8088/sse"
     }
   }
 }
