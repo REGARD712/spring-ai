@@ -20,9 +20,9 @@ public class UserService {
     static Map<String, UserInfo> map = new HashMap<>();
 
     static {
-        map.put("zhangsan", new UserInfo("zhangsan", 18, "男", "Beijing"));
+        map.put("Zhangsan", new UserInfo("Zhangsan", 18, "男", "Beijing"));
         map.put("Rachel", new UserInfo("Rachel", 22, "女", "California"));
-        map.put("wangwu", new UserInfo("wangwu", 28, "男", "Shanghai"));
+        map.put("Wangwu", new UserInfo("Wangwu", 28, "男", "Shanghai"));
         map.put("Bruce", new UserInfo("Bruce", 23, "男", "New York"));
         map.put("Nancy", new UserInfo("Nancy", 21, "女", "Indiana"));
     }
