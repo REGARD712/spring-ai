@@ -2,7 +2,7 @@ spring:
   ai:
     dashscope:
       api-key: ${QWEN_API_KEY}
-      embedding:
-        options:
-          model: text-embedding-v3
-          dimensions: 512
+#      embedding:
+#        options:
+#          model: text-embedding-v3
+#          dimensions: 512
