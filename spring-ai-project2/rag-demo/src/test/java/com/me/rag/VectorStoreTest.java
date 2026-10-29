@@ -24,11 +24,23 @@ public class VectorStoreTest {
 
     private SimpleVectorStore simpleVectorStore;
 
+    /**
+     * 向量数据库在测试之前初始化
+     *
+     * @param
+     * @return void
+     */
     @BeforeEach
     void setUp() {
         simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
     }
 
+    /**
+     * 向量数据库存储
+     *
+     * @param  
+     * @return void
+     */
     @Test
     void save() {
         Document doc = Document.builder()
