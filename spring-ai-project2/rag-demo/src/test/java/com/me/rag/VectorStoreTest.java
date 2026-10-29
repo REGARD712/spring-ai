@@ -1,7 +1,6 @@
 package com.me.rag;
 
 import com.alibaba.cloud.ai.dashscope.embedding.DashScopeEmbeddingModel;
-import jakarta.annotation.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
