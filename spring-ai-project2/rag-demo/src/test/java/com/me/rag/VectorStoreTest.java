@@ -3,6 +3,10 @@ package com.me.rag;
 import com.alibaba.cloud.ai.dashscope.embedding.DashScopeEmbeddingModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
@@ -20,6 +24,9 @@ import java.util.List;
  */
 @SpringBootTest
 public class VectorStoreTest {
+    @Autowired
+    private ChatModel chatModel;
+
     @Autowired
     private DashScopeEmbeddingModel embeddingModel;
 
@@ -55,7 +62,7 @@ public class VectorStoreTest {
     /**
      * 向量数据库存储
      *
-     * @param  
+     * @param
      * @return void
      */
 //    @Test
@@ -94,5 +101,88 @@ public class VectorStoreTest {
                 .build();
         List<Document> documents = simpleVectorStore.similaritySearch(searchRequest);
         documents.forEach(System.out::println);
+    }
+
+    /**
+     * rag
+     *
+     * @param
+     * @return void
+     */
+    @Test
+    void rag() {
+        ChatClient chatClient = ChatClient.builder(chatModel).build();
+        QuestionAnswerAdvisor questionAnswerAdvisor = QuestionAnswerAdvisor.builder(simpleVectorStore).build();
+        String message = "奥运会什么时候举行?";
+        String content = chatClient.prompt()
+                .advisors(questionAnswerAdvisor)
+                .user(message)
+                .call()
+                .content();
+        System.out.println(content);
+    }
+
+    /**
+     * rag2
+     *
+     * @param
+     * @return void
+     */
+    @Test
+    void rag2() {
+        ChatClient chatClient = ChatClient.builder(chatModel).build();
+        String message = "奥运会什么时候举行?";
+        QuestionAnswerAdvisor questionAnswerAdvisor = QuestionAnswerAdvisor
+                .builder(simpleVectorStore)
+                .searchRequest(SearchRequest.builder()
+                        .query(message)
+                        .similarityThreshold(0.45)
+                        .topK(5)
+                        .build())
+                .build();
+        String content = chatClient.prompt()
+                .advisors(questionAnswerAdvisor)
+                .user(message)
+                .call()
+                .content();
+        System.out.println(content);
+    }
+
+    /**
+     * rag3
+     *
+     * @param
+     * @return void
+     */
+    @Test
+    void rag3() {
+        ChatClient chatClient = ChatClient.builder(chatModel).build();
+        String message = "中国的首都是哪里?";
+        PromptTemplate template = new PromptTemplate("""
+                {query}
+                         下面是上下文信息
+                ---------------------
+                {question_answer_context}
+                ---------------------
+                         根据给定的上下文信息进行回复, 并遵守以下规则:
+                         1. 如果上下文信息中有相关的知识, 使用上下文的信息进行回复
+                         2. 如果上下文信息中没有相关的知识, 直接回复"不知道"
+                         3. 在回复时, 尽量避免使用"根据提供的信息...", "根据上下文信息..."类似的话语
+                """);
+        QuestionAnswerAdvisor questionAnswerAdvisor = QuestionAnswerAdvisor
+                .builder(simpleVectorStore)
+                .promptTemplate(template)
+                .searchRequest(SearchRequest.builder()
+                        .query(message)
+                        .similarityThreshold(0.45)
+                        .topK(5)
+                        .build())
+                .build();
+        String content = chatClient.prompt()
+                .advisors(questionAnswerAdvisor)
+                .user(message)
+                .call()
+                .content();
+        System.out.println(content);
     }
 }
