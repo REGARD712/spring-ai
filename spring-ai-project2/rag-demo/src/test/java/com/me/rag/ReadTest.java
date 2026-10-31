@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.JsonReader;
 import org.springframework.ai.reader.TextReader;
+import org.springframework.ai.reader.jsoup.JsoupDocumentReader;
+import org.springframework.ai.reader.jsoup.config.JsoupDocumentReaderConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -81,5 +83,24 @@ public class ReadTest {
           documents.forEach(document -> {
                System.out.println(document.getText());
           });
+     }
+
+     @Test
+     void testHtmlReader(@Value("classpath:/files/my-page.html")Resource resource) {
+          JsoupDocumentReaderConfig config = JsoupDocumentReaderConfig.builder()
+                  .selector("article p") // Extract paragraphs within <article> tags
+                  .charset("ISO-8859-1")  // Use ISO-8859-1 encoding
+                  .includeLinkUrls(true) // Include link URLs in metadata
+                  .metadataTags(List.of("author", "date")) // Extract author and date meta tags
+                  .additionalMetadata("source", "my-page.html") // Add custom metadata
+                  .build();
+
+          JsoupDocumentReader reader = new JsoupDocumentReader(resource, config);
+          List<Document> documents = reader.get();
+          System.out.println(documents.size());
+          documents.forEach(document -> {
+               System.out.println(document.getText());
+          });
+          System.out.println(documents.get(0).getMetadata());
      }
 }
