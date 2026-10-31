@@ -49,6 +49,11 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-markdown-document-reader</artifactId>
         </dependency>
+        <!-- 从PDF文档中读取内容 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-pdf-document-reader</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

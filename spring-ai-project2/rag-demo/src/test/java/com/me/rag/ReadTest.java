@@ -2,12 +2,16 @@ package com.me.rag;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.reader.ExtractedTextFormatter;
 import org.springframework.ai.reader.JsonReader;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.reader.jsoup.JsoupDocumentReader;
 import org.springframework.ai.reader.jsoup.config.JsoupDocumentReaderConfig;
 import org.springframework.ai.reader.markdown.MarkdownDocumentReader;
 import org.springframework.ai.reader.markdown.config.MarkdownDocumentReaderConfig;
+import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
+import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
+import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -24,116 +28,163 @@ import java.util.List;
 @SpringBootTest
 public class ReadTest {
 
-     /**
-      * 读取 JSON 文件
-      *
-      * @param resource JSON 文件资源
-      * @return void
-      */
-     @Test
-     void testJsonReader(@Value("classpath:/files/web.json")Resource resource) {
-          JsonReader jsonReader = new JsonReader(resource, "sites");
-          List<Document> documents = jsonReader.get();
-          System.out.println(documents.size());
-          documents.forEach(document -> {
-               System.out.println(document.getText());
-          });
-     }
+    /**
+     * 读取 JSON 文件
+     *
+     * @param resource JSON 文件资源
+     * @return void
+     */
+    @Test
+    void testJsonReader(@Value("classpath:/files/web.json") Resource resource) {
+        JsonReader jsonReader = new JsonReader(resource, "sites");
+        List<Document> documents = jsonReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+        });
+    }
 
-     /**
-      * 读取 JSON 数组格式文件
-      *
-      * @param resource JSON 数组格式文件资源
-      * @return void
-      */
-     @Test
-     void testJsonReader2(@Value("classpath:/files/webArray.json")Resource resource) {
-          JsonReader jsonReader = new JsonReader(resource, "brand", "description");
-          List<Document> documents = jsonReader.get();
-          System.out.println(documents.size());
-          documents.forEach(document -> {
-               System.out.println(document.getText());
-          });
-     }
+    /**
+     * 读取 JSON 数组格式文件
+     *
+     * @param resource JSON 数组格式文件资源
+     * @return void
+     */
+    @Test
+    void testJsonReader2(@Value("classpath:/files/webArray.json") Resource resource) {
+        JsonReader jsonReader = new JsonReader(resource, "brand", "description");
+        List<Document> documents = jsonReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+        });
+    }
 
-     /**
-      * 读取文本文件
-      *
-      * @param resource 文本文件资源
-      * @return void
-      */
-     @Test
-     void testTextReader(@Value("classpath:/files/text.txt")Resource resource) {
-          TextReader textReader = new TextReader(resource);
-          List<Document> documents = textReader.get();
-          System.out.println(documents.size());
-          documents.forEach(document -> {
-               System.out.println(document.getText());
-          });
-     }
+    /**
+     * 读取文本文件
+     *
+     * @param resource 文本文件资源
+     * @return void
+     */
+    @Test
+    void testTextReader(@Value("classpath:/files/text.txt") Resource resource) {
+        TextReader textReader = new TextReader(resource);
+        List<Document> documents = textReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+        });
+    }
 
-     /**
-      * 读取文本文件
-      *
-      * @return void
-      */
-     @Test
-     void testTextReader() {
-          TextReader textReader = new TextReader("classpath:/files/text.txt");
-          List<Document> documents = textReader.get();
-          System.out.println(documents.size());
-          documents.forEach(document -> {
-               System.out.println(document.getText());
-          });
-     }
+    /**
+     * 读取文本文件
+     *
+     * @return void
+     */
+    @Test
+    void testTextReader() {
+        TextReader textReader = new TextReader("classpath:/files/text.txt");
+        List<Document> documents = textReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+        });
+    }
 
-     /**
-      * 读取 HTML 文件
-      *
-      *
-      * @param resource HTML 文件资源
-      * @return void
-      */
-     @Test
-     void testHtmlReader(@Value("classpath:/files/my-page.html")Resource resource) {
-          JsoupDocumentReaderConfig config = JsoupDocumentReaderConfig.builder()
-                  .selector("article p") // Extract paragraphs within <article> tags
-                  .charset("ISO-8859-1")  // Use ISO-8859-1 encoding
-                  .includeLinkUrls(true) // Include link URLs in metadata
-                  .metadataTags(List.of("author", "date")) // Extract author and date meta tags
-                  .additionalMetadata("source", "my-page.html") // Add custom metadata
-                  .build();
+    /**
+     * 读取 HTML 文件
+     *
+     * @param resource HTML 文件资源
+     * @return void
+     */
+    @Test
+    void testHtmlReader(@Value("classpath:/files/my-page.html") Resource resource) {
+        JsoupDocumentReaderConfig config = JsoupDocumentReaderConfig.builder()
+                .selector("article p") // Extract paragraphs within <article> tags
+                .charset("ISO-8859-1")  // Use ISO-8859-1 encoding
+                .includeLinkUrls(true) // Include link URLs in metadata
+                .metadataTags(List.of("author", "date")) // Extract author and date meta tags
+                .additionalMetadata("source", "my-page.html") // Add custom metadata
+                .build();
 
-          JsoupDocumentReader reader = new JsoupDocumentReader(resource, config);
-          List<Document> documents = reader.get();
-          System.out.println(documents.size());
-          documents.forEach(document -> {
-               System.out.println(document.getText());
-          });
-          System.out.println(documents.get(0).getMetadata());
-     }
+        JsoupDocumentReader reader = new JsoupDocumentReader(resource, config);
+        List<Document> documents = reader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+        });
+        System.out.println(documents.get(0).getMetadata());
+    }
 
-     /**
-      * 读取 Markdown 文件
-      *
-      * @param resource Markdown 文件资源
-      * @return void
-      */
-     @Test
-     void testMarkReader(@Value("classpath:/files/code.md")Resource resource) {
-          MarkdownDocumentReaderConfig config = MarkdownDocumentReaderConfig.builder()
-                  .withHorizontalRuleCreateDocument(true)
-                  .withIncludeCodeBlock(false)
-                  .withIncludeBlockquote(false)
-                  .withAdditionalMetadata("filename", "code.md")
-                  .build();
+    /**
+     * 读取 Markdown 文件
+     *
+     * @param resource Markdown 文件资源
+     * @return void
+     */
+    @Test
+    void testMarkReader(@Value("classpath:/files/code.md") Resource resource) {
+        MarkdownDocumentReaderConfig config = MarkdownDocumentReaderConfig.builder()
+                .withHorizontalRuleCreateDocument(true)
+                .withIncludeCodeBlock(false)
+                .withIncludeBlockquote(false)
+                .withAdditionalMetadata("filename", "code.md")
+                .build();
 
-          MarkdownDocumentReader reader = new MarkdownDocumentReader(resource, config);
-          List<Document> documents = reader.get();
-          System.out.println(documents.size());
-          documents.forEach(document -> {
-               System.out.println(document.getText());
-               System.out.println(document.getMetadata());
-          });
-     }
+        MarkdownDocumentReader reader = new MarkdownDocumentReader(resource, config);
+        List<Document> documents = reader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        });
+    }
+
+    /**
+     * 读取 PDF 文件
+     *
+     * @param
+     * @return void
+     */
+    @Test
+    void testPdfReader() {
+        PagePdfDocumentReader pdfReader = new PagePdfDocumentReader("classpath:/files/sample-page.pdf",
+                PdfDocumentReaderConfig.builder()
+                        .withPageTopMargin(0)
+                        .withPageExtractedTextFormatter(ExtractedTextFormatter.builder()
+                                .withNumberOfTopTextLinesToDelete(0)
+                                .build())
+                        .withPagesPerDocument(1)
+                        .build());
+        List<Document> documents = pdfReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        });
+    }
+
+    /**
+     * 读取 PDF 文件（按段落）
+     *
+     * @param
+     * @return void
+     */
+    @Test
+    void testPdfReader2() {
+        ParagraphPdfDocumentReader pdfReader = new ParagraphPdfDocumentReader("classpath:/files/sample-paragraph.pdf",
+                PdfDocumentReaderConfig.builder()
+                        .withPageTopMargin(0)
+                        .withPageExtractedTextFormatter(ExtractedTextFormatter.builder()
+                                .withNumberOfTopTextLinesToDelete(0)
+                                .build())
+                        .withPagesPerDocument(1)
+                        .build());
+        List<Document> documents = pdfReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        });
+    }
 }
