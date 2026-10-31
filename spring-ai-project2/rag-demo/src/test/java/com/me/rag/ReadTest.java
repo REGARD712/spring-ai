@@ -6,6 +6,8 @@ import org.springframework.ai.reader.JsonReader;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.reader.jsoup.JsoupDocumentReader;
 import org.springframework.ai.reader.jsoup.config.JsoupDocumentReaderConfig;
+import org.springframework.ai.reader.markdown.MarkdownDocumentReader;
+import org.springframework.ai.reader.markdown.config.MarkdownDocumentReaderConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -85,6 +87,13 @@ public class ReadTest {
           });
      }
 
+     /**
+      * 读取 HTML 文件
+      *
+      *
+      * @param resource HTML 文件资源
+      * @return void
+      */
      @Test
      void testHtmlReader(@Value("classpath:/files/my-page.html")Resource resource) {
           JsoupDocumentReaderConfig config = JsoupDocumentReaderConfig.builder()
@@ -102,5 +111,29 @@ public class ReadTest {
                System.out.println(document.getText());
           });
           System.out.println(documents.get(0).getMetadata());
+     }
+
+     /**
+      * 读取 Markdown 文件
+      *
+      * @param resource Markdown 文件资源
+      * @return void
+      */
+     @Test
+     void testMarkReader(@Value("classpath:/files/code.md")Resource resource) {
+          MarkdownDocumentReaderConfig config = MarkdownDocumentReaderConfig.builder()
+                  .withHorizontalRuleCreateDocument(true)
+                  .withIncludeCodeBlock(false)
+                  .withIncludeBlockquote(false)
+                  .withAdditionalMetadata("filename", "code.md")
+                  .build();
+
+          MarkdownDocumentReader reader = new MarkdownDocumentReader(resource, config);
+          List<Document> documents = reader.get();
+          System.out.println(documents.size());
+          documents.forEach(document -> {
+               System.out.println(document.getText());
+               System.out.println(document.getMetadata());
+          });
      }
 }
