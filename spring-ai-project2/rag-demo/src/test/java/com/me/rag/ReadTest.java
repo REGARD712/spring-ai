@@ -12,6 +12,7 @@ import org.springframework.ai.reader.markdown.config.MarkdownDocumentReaderConfi
 import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
 import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
 import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
+import org.springframework.ai.reader.tika.TikaDocumentReader;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -181,6 +182,24 @@ public class ReadTest {
                         .withPagesPerDocument(1)
                         .build());
         List<Document> documents = pdfReader.get();
+        System.out.println(documents.size());
+        documents.forEach(document -> {
+            System.out.println(document.getText());
+            System.out.println(document.getMetadata());
+        });
+    }
+
+    /**
+     * 读取 Tika 文件
+     * 支持 PDF, DOC/DOCX, PPT/PPTX, HTML 等格式
+     *
+     * @param resource Tika 文件资源
+     * @return void
+     */
+    @Test
+    void testTikaReader(@Value("classpath:/files/sample-page.pdf") Resource resource) {
+        TikaDocumentReader tikaDocumentReader = new TikaDocumentReader(resource);
+        List<Document> documents = tikaDocumentReader.get();
         System.out.println(documents.size());
         documents.forEach(document -> {
             System.out.println(document.getText());

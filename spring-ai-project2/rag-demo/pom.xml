@@ -54,6 +54,18 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-pdf-document-reader</artifactId>
         </dependency>
+        <!-- 从Tika(PDF, DOC/DOCX, PPT/PPTX, and HTML)中读取内容 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-tika-document-reader</artifactId>
+        </dependency>
+        <!-- 从PDF文档中读取内容，需要解决PDFBox的依赖版本冲突 -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>3.0.4</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>
