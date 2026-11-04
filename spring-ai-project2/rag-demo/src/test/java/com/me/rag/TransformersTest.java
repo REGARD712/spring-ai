@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.document.MetadataMode;
 import org.springframework.ai.model.transformer.KeywordMetadataEnricher;
 import org.springframework.ai.model.transformer.SummaryMetadataEnricher;
 import org.springframework.ai.reader.TextReader;
@@ -122,13 +123,20 @@ public class TransformersTest {
         System.out.println("文本拆分, size: " + splitterDocs.size());
 
         // 摘要提取
+        String summaryTemplate = """
+                根据给定的文本:
+                {context_str}
+                生成摘要信息, 限制在50字以内. 只返回摘要信息, 其他信息不返回
+                """;
         SummaryMetadataEnricher enricher = new SummaryMetadataEnricher(
                 chatModel,
                 List.of(
                         SummaryMetadataEnricher.SummaryType.CURRENT,
                         SummaryMetadataEnricher.SummaryType.PREVIOUS,
                         SummaryMetadataEnricher.SummaryType.NEXT
-                )
+                ),
+                summaryTemplate,
+                MetadataMode.NONE
         );
         List<Document> enricherDocs = enricher.apply(splitterDocs);
         System.out.println("摘要提取, size: " + enricherDocs.size());
