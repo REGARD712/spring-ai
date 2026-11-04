@@ -5,6 +5,7 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.model.transformer.KeywordMetadataEnricher;
+import org.springframework.ai.model.transformer.SummaryMetadataEnricher;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,47 @@ public class TransformersTest {
         enricherDocs.forEach(document -> {
             System.out.println("关键词提取, content: " + document.getText());
             System.out.println("关键词提取, metaData: " + document.getMetadata());
+        });
+    }
+
+    /**
+     * 摘要提取: SummaryMetadataEnricher
+     *
+     * @param
+     * @return void
+     */
+    @Test
+    void testSummaryEnricher() {
+        // 加载文档
+        TextReader textReader = new TextReader("classpath:/files/rule.txt");
+        List<Document> documents = textReader.get();
+        System.out.println("文档加载, size: " + documents.size());
+
+        // 文本拆分
+        TokenTextSplitter splitter = new TokenTextSplitter(
+                1000,
+                300,
+                5,
+                5000,
+                true
+        );
+        List<Document> splitterDocs = splitter.apply(documents);
+        System.out.println("文本拆分, size: " + splitterDocs.size());
+
+        // 摘要提取
+        SummaryMetadataEnricher enricher = new SummaryMetadataEnricher(
+                chatModel,
+                List.of(
+                        SummaryMetadataEnricher.SummaryType.CURRENT,
+                        SummaryMetadataEnricher.SummaryType.PREVIOUS,
+                        SummaryMetadataEnricher.SummaryType.NEXT
+                )
+        );
+        List<Document> enricherDocs = enricher.apply(splitterDocs);
+        System.out.println("摘要提取, size: " + enricherDocs.size());
+        enricherDocs.forEach(document -> {
+            System.out.println("摘要提取, content: " + document.getText());
+            System.out.println("摘要提取, metaData: " + document.getMetadata());
         });
     }
 }
