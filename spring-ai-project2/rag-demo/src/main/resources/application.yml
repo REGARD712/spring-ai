@@ -2,7 +2,15 @@ spring:
   ai:
     dashscope:
       api-key: ${QWEN_API_KEY}
-#      embedding:
-#        options:
-#          model: text-embedding-v3
-#          dimensions: 512
+    #      embedding:
+    #        options:
+    #          model: text-embedding-v3
+    #          dimensions: 512
+    vectorstore:
+      redis:
+        initialize-schema: true # 是否自动创建索引结构
+        index-name: spring-ai-index # 向量索引名称
+        prefix: "embedding:" # Redis Key 前缀
+  data:
+    redis:
+      url: redis://8.134.173.121:6379

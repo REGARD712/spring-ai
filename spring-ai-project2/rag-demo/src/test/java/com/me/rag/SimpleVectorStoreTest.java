@@ -23,7 +23,7 @@ import java.util.List;
  * @Date: 2026/10/29
  */
 @SpringBootTest
-public class VectorStoreTest {
+public class SimpleVectorStoreTest {
     @Autowired
     private ChatModel chatModel;
 
