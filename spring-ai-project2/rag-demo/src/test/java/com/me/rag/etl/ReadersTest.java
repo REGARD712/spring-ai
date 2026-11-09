@@ -1,4 +1,4 @@
-package com.me.rag;
+package com.me.rag.etl;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
@@ -20,14 +20,14 @@ import org.springframework.core.io.Resource;
 import java.util.List;
 
 /**
- * ETL 的 Reader
+ * ETL-Extract: Reader 测试类
  *
  * @ClassName: ReadTest
  * @Author: JacksonLee
  * @Date: 2026/10/30
  */
 @SpringBootTest
-public class ReadTest {
+public class ReadersTest {
 
     /**
      * 读取 JSON 文件

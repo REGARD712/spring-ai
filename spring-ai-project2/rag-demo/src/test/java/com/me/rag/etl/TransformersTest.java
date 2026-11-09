@@ -1,4 +1,4 @@
-package com.me.rag;
+package com.me.rag.etl;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatModel;
@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 /**
- * ETL 的 Transformer 测试类
+ * ETL-Transform: Transformer 测试类
  *
  * @ClassName: TransformersTest
  * @Author: JacksonLee
