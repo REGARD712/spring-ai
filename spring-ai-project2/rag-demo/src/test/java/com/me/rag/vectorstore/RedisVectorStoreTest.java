@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 /**
- * TODO 描述类做什么事情/实现什么功能
+ * ETL-Load-RedisVectorStore
  *
  * @ClassName: RedisVectorStore
  * @Author: JacksonLee
@@ -29,7 +29,7 @@ public class RedisVectorStoreTest {
      */
     @Test
     void testRedisVectorStore() {
-        // 存储向量数据库(只执行一次)
+//         存储向量数据库(只执行一次)
 //        Document doc = Document.builder()
 //                .text("2025年夏季奥运会将于巴黎举行, 预计吸引全球数百万观众")
 //                .build();
