@@ -1,4 +1,4 @@
-package com.me.rag;
+package com.me.rag.vectorstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;

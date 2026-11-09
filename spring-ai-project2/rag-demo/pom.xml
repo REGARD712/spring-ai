@@ -71,10 +71,15 @@
             <groupId>com.alibaba.cloud.ai</groupId>
             <artifactId>spring-ai-alibaba-starter-document-reader-mysql</artifactId>
         </dependency>
-        <!-- 从Redis中读取向量存储 -->
+        <!-- 存入将文档内容转换为Redis向量数据库 -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.ai</groupId>-->
+<!--            <artifactId>spring-ai-starter-vector-store-redis</artifactId>-->
+<!--        </dependency>-->
+        <!-- 存入将文档内容转换为Pinecone向量数据库 -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-redis</artifactId>
+            <artifactId>spring-ai-starter-vector-store-pinecone</artifactId>
         </dependency>
     </dependencies>
 

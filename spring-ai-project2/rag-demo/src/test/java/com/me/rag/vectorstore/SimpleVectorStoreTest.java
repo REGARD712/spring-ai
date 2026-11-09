@@ -1,4 +1,4 @@
-package com.me.rag;
+package com.me.rag.vectorstore;
 
 import com.alibaba.cloud.ai.dashscope.embedding.DashScopeEmbeddingModel;
 import org.junit.jupiter.api.BeforeEach;
