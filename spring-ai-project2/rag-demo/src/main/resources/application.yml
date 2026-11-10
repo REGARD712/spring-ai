@@ -2,6 +2,9 @@ spring:
   ai:
     dashscope:
       api-key: ${QWEN_API_KEY}
+      rerank:
+        options:
+          model: gte-rerank-v2
     #      embedding:
     #        options:
     #          model: text-embedding-v3
