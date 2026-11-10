@@ -26,7 +26,7 @@ public class TextEmbeddingTest {
 
     @Test
     void embedding() {
-        float[] embed = embeddingModel.embed("Hello RAG");
+        float[] embed = embeddingModel.embed("Hello RAG!");
         System.out.println(embed.length);
         System.out.println(Arrays.toString(embed));
     }
