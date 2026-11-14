@@ -1,11 +1,15 @@
 package com.me.chatbot.config;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
+import com.me.chatbot.rag.AdvisorFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,19 +23,29 @@ import org.springframework.context.annotation.Configuration;
 public class CommonConfiguration {
 
     /**
-     * @param chatModel deepseek的ChatModel
-     * @param chatMemory 管理会话的ChatMemory
-     * @return ChatClient ChatClient deepseek的ChatClient
-     * @description: 封装deepseekChatClient(多轮对话, 有记忆功能)
+     * 封装DashScopeChatClient
+     *
+     * @param chatModel DashScope的ChatModel
+     * @param chatMemory 管理会话记忆的ChatMemory
+     * @param vectorStore 向量数据库
+     * @return ChatClient
      */
     @Bean
-    public ChatClient dashScopeChatClient (DashScopeChatModel chatModel, ChatMemory chatMemory) {
+     public ChatClient dashScopeChatClient(
+            DashScopeChatModel chatModel,
+            ChatMemory chatMemory,
+            VectorStore vectorStore
+    ) {
         return ChatClient.builder(chatModel)
-                .defaultSystem("你叫贾维斯，是托尼斯塔克创造的人工智能助手，能够帮忙解决各种问题")
+                .defaultSystem("""
+                        你是一名专业的企业培训课程咨询助手, 代表【比特就业课】为客户提供课程咨询服务.
+                        你的职责是准确、礼貌、高效地解答客户关于比特就业课培训课程的各类问题
+                        """)
                 .defaultAdvisors(
                         new SimpleLoggerAdvisor(),
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
                 )
+                .defaultAdvisors(AdvisorFactory.createQuestionAnswerAdvisor(vectorStore))
                 .build();
     }
 
@@ -41,7 +55,7 @@ public class CommonConfiguration {
      * @Description: 返回一个管理聊天会话记忆的ChatMemory
      */
     @Bean
-    public ChatMemory chatMemory () {
+    public ChatMemory chatMemory() {
         return MessageWindowChatMemory.builder()
                 .maxMessages(10) // 最大记忆条数
                 .build();
