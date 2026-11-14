@@ -34,8 +34,8 @@ public class ChatController {
     @Resource
     private ChatMemory chatMemory;
 
-    public ChatController(ChatClient qwenChatClient) {
-        this.chatClient = qwenChatClient;
+    public ChatController(ChatClient chatClient) {
+        this.chatClient = chatClient;
     }
 
     /**
