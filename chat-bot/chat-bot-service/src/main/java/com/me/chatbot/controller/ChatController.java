@@ -38,9 +38,9 @@ public class ChatController {
 //        this.chatClient = ollamaChatClient;
 //    }
 
-    // 改为deepseek
-    public ChatController(ChatClient deepseekChatClient) {
-        this.chatClient = deepseekChatClient;
+    // 改为qwen
+    public ChatController(ChatClient qwenChatClient) {
+        this.chatClient = qwenChatClient;
     }
 
     /**
