@@ -34,11 +34,6 @@ public class ChatController {
     @Resource
     private ChatMemory chatMemory;
 
-//    public ChatController(ChatClient ollamaChatClient) {
-//        this.chatClient = ollamaChatClient;
-//    }
-
-    // 改为qwen
     public ChatController(ChatClient qwenChatClient) {
         this.chatClient = qwenChatClient;
     }
