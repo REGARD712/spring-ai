@@ -53,6 +53,7 @@ public class ChatController {
         // 返回智能体的响应
         return this.chatClient.prompt()
                 .user(prompt)
+                .system(build->build.text("当前的会话ID: %s, 你需要将会话ID绑定到工单".formatted(chatId)))
                 .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .stream()
                 .content();
