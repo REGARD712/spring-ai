@@ -9,8 +9,18 @@ spring:
       embedding:
         options:
           model: text-embedding-v3
+    vectorstore:
+      redis:
+        initialize-schema: true    # 是否自动创建索引结构
+        index-name: bit-chat-bot   # 向量索引名称
+        prefix: "rag:"     # Redis Key 前缀
+  data:
+    redis:
+      url: redis://8.134.173.121:6379
 logging:
   level:
     org.springframework.ai.chat.client.advisor: debug
   pattern:
     console: "%d{HH:mm:ss.SSS} %5p ${PID:- } --- [%15.15t] %-40.40logger{39} :%m%n%wEx"
+data:
+  is-load: false
