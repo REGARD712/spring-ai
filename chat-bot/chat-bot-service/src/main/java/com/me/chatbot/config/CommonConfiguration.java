@@ -1,6 +1,7 @@
 package com.me.chatbot.config;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
+import com.alibaba.cloud.ai.model.RerankModel;
 import com.me.chatbot.rag.AdvisorFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -25,16 +26,18 @@ public class CommonConfiguration {
     /**
      * 封装DashScopeChatClient
      *
-     * @param chatModel DashScope的ChatModel
-     * @param chatMemory 管理会话记忆的ChatMemory
+     * @param chatModel   DashScope的ChatModel
+     * @param chatMemory  管理会话记忆的ChatMemory
      * @param vectorStore 向量数据库
-     * @return ChatClient
+     * @param rerankModel 重排序模型
+     * @return ChatClient 配置好的ChatClient
      */
     @Bean
      public ChatClient dashScopeChatClient(
             DashScopeChatModel chatModel,
             ChatMemory chatMemory,
-            VectorStore vectorStore
+            VectorStore vectorStore,
+            RerankModel rerankModel
     ) {
         return ChatClient.builder(chatModel)
                 .defaultSystem("""
@@ -46,6 +49,7 @@ public class CommonConfiguration {
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
                 )
                 .defaultAdvisors(AdvisorFactory.createQuestionAnswerAdvisor(vectorStore))
+                .defaultAdvisors(AdvisorFactory.createRerankAdvisor(vectorStore, rerankModel))
                 .build();
     }
 

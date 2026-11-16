@@ -1,11 +1,21 @@
 package com.me.chatbot.rag;
 
+import com.alibaba.cloud.ai.advisor.RetrievalRerankAdvisor;
+import com.alibaba.cloud.ai.model.RerankModel;
+import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 
 public class AdvisorFactory {
 
+    /**
+     * 创建一个问题回答advisor
+     *
+     * @param vectorStore 向量数据库
+     * @return QuestionAnswerAdvisor
+     */
     public static QuestionAnswerAdvisor createQuestionAnswerAdvisor(VectorStore vectorStore) {
         PromptTemplate promptTemplate = new PromptTemplate("""
                 【用户问题信息】
@@ -31,4 +41,26 @@ public class AdvisorFactory {
                 .promptTemplate(promptTemplate)
                 .build();
     }
+
+    /**
+     * 创建一个重排序advisor
+     *
+     * @param vectorStore 向量数据库
+     * @param rerankModel 重排序模型
+     * @return Advisor
+     */
+    public static Advisor createRerankAdvisor(
+            VectorStore vectorStore,
+            RerankModel rerankModel
+    ) {
+        return new RetrievalRerankAdvisor(
+                vectorStore,
+                rerankModel,
+                SearchRequest.builder()
+                        .topK(100)
+                        .similarityThreshold(0.3)
+                        .build()
+        );
+    }
+
 }
