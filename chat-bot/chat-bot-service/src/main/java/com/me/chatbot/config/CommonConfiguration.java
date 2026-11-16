@@ -10,6 +10,7 @@ import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvi
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,7 +38,8 @@ public class CommonConfiguration {
             DashScopeChatModel chatModel,
             ChatMemory chatMemory,
             VectorStore vectorStore,
-            RerankModel rerankModel
+            RerankModel rerankModel,
+            ToolCallbackProvider toolCallbackProvider
     ) {
         return ChatClient.builder(chatModel)
                 .defaultSystem("""
@@ -50,6 +52,7 @@ public class CommonConfiguration {
                 )
                 .defaultAdvisors(AdvisorFactory.createQuestionAnswerAdvisor(vectorStore))
                 .defaultAdvisors(AdvisorFactory.createRerankAdvisor(vectorStore, rerankModel))
+                .defaultToolCallbacks(toolCallbackProvider)
                 .build();
     }
 
