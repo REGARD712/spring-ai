@@ -2,9 +2,11 @@ package com.me.chatbot.config;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.alibaba.cloud.ai.model.RerankModel;
+import com.me.chatbot.advisor.CustomSafeGuardAdvisor;
 import com.me.chatbot.rag.AdvisorFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -14,6 +16,8 @@ import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 /**
  * @ClassName: CommonConfiguration
@@ -52,6 +56,7 @@ public class CommonConfiguration {
                 )
                 .defaultAdvisors(AdvisorFactory.createQuestionAnswerAdvisor(vectorStore))
                 .defaultAdvisors(AdvisorFactory.createRerankAdvisor(vectorStore, rerankModel))
+                .defaultAdvisors(new CustomSafeGuardAdvisor(List.of("公务员", "政府"))) // 仅作演示
                 .defaultToolCallbacks(toolCallbackProvider)
                 .build();
     }
