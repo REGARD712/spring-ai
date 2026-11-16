@@ -14,7 +14,7 @@ import java.util.UUID;
 @Service
 public class TicketService {
 
-    private TicketMapper ticketMapper;
+    private final TicketMapper ticketMapper;
 
     public TicketService(TicketMapper ticketMapper) {
         this.ticketMapper = ticketMapper;
