@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>chat-bot-service</module>
+        <module>ticket-service</module>
     </modules>
 
     <properties>
