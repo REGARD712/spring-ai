@@ -74,4 +74,5 @@ public class CommonConfiguration {
                 .maxMessages(10) // 每个会话的最大记忆条数
                 .build();
     }
+
 }
