@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 @Repository
 public class MemoryChatHistoryRepository implements ChatHistoryRepository {
-    private Map<String, String> chatInfos = new LinkedHashMap<>();
+    private final Map<String, String> chatInfos = new LinkedHashMap<>();
 
     @Override
     public void save(String chatId, String title) {

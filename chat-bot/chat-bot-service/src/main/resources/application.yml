@@ -22,6 +22,17 @@ spring:
         request-timeout: 60000
         stdio:
           servers-configuration: classpath:/mcp/mcp-servers-config.json
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+            schema: classpath:/sql/schema-mysql.sql
+  datasource:
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://localhost:3306/bit_chat_bot?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&
+    driver-class-name: com.mysql.cj.jdbc.Driver
   data:
     redis:
       url: redis://8.134.173.121:6379

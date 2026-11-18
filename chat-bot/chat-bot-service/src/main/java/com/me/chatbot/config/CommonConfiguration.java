@@ -11,6 +11,7 @@ import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -62,14 +63,15 @@ public class CommonConfiguration {
     }
 
     /**
-     * @param
+     * @param jdbcChatMemoryRepository 数据库中的聊天记忆存储库
      * @return ChatMemory 管理会话记忆的ChatMemory
      * @Description: 返回一个管理聊天会话记忆的ChatMemory
      */
     @Bean
-    public ChatMemory chatMemory() {
+    public ChatMemory chatMemory(JdbcChatMemoryRepository jdbcChatMemoryRepository) {
         return MessageWindowChatMemory.builder()
-                .maxMessages(10) // 最大记忆条数
+                .chatMemoryRepository(jdbcChatMemoryRepository)
+                .maxMessages(10) // 每个会话的最大记忆条数
                 .build();
     }
 }
