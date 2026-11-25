@@ -6,7 +6,7 @@ spring:
     name: spring-alibaba-demo
   ai:
     dashscope:
-      api-key: {}
+      api-key: ${QWEN_API_KEY}
       chat:
         options:
           model: qwen-vl-max #模型名称
