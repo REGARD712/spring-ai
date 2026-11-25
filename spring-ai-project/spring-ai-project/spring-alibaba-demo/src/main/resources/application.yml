@@ -6,7 +6,7 @@ spring:
     name: spring-alibaba-demo
   ai:
     dashscope:
-      api-key: sk-ws-H.PMPXHRY.Mzyk.MEUCIQC3OMIGnnBymAR7GDFUyeOxO4l4qu-A_rZ720sdyy-3zgIgAX_qHeDUx9_gAehTWp-d12LPX8hFpKV3WiUSZrT4rjA
+      api-key: {}
       chat:
         options:
           model: qwen-vl-max #模型名称
